@@ -8,7 +8,6 @@ services:
     env_file:
       - metabase/config/postgres_exemple.env
 
-
   metabase:
     image: metabase/metabase
     ports:
@@ -20,3 +19,6 @@ services:
 
   lib:
     build: .
+    env_file:
+      - .env
+    command: bash -c "poetry config pypi-token.pypi ${TOKEN_PYPI} && poetry version ${VERSION} && poetry build && poetry publish"

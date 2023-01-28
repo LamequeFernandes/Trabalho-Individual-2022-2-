@@ -8,10 +8,6 @@ services:
     env_file:
       - metabase/config/postgres_exemple.env
 
-  # app:
-  #   build: .
-  #   depends_on:
-  #     - db
 
   metabase:
     image: metabase/metabase
@@ -21,25 +17,6 @@ services:
       - metabase/config/metabase_database_exemple.env
     depends_on:
       - postgres
-    # environment: 
-    #   - MB_DB_TYPE=mongodb
-    #   - MB_DB_DBNAME=lappis
-    #   - MB_DB_PORT=27017
-    #   - MB_DB_USER=lappis
-    #   - MB_DB_PASS=lappis
-    #   - MB_DB_HOST=localhost
 
-
-
-  # mongobd:
-  #   image: mongo
-  #   restart: always
-  #   container_name: mongobd
-  #   # environment:
-  #   #   - MONGO_INITDB_ROOT_USERNAME=lappis
-  #   #   - MONGO_INITDB_ROOT_PASSWORD=lappis
-  #   env_file:
-  #     - metabase/config/mongo_exemple.env
-  #   ports:
-  #     - 27017:27017
-
+  lib:
+    build: .

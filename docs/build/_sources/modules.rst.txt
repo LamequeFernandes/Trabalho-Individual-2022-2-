@@ -1,0 +1,12 @@
+minhabiblioteca modules
+=======================
+
+.. toctree::
+   :maxdepth: 2
+
+   minhabiblioteca
+
+.. toctree::
+   :maxdepth: 2
+
+   minhabiblioteca

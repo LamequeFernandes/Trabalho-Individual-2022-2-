@@ -1,0 +1,12 @@
+minhabiblioteca
+===============
+
+.. automodule:: data_pipeline.feature_engineering.key_smash
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: main
+    :members:
+    :undoc-members:
+    :show-inheritance:

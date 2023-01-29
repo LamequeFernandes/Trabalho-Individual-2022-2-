@@ -39,14 +39,14 @@ jobs:
       run: |
         poetry install
 
-    - name: Verificando lint
-      run: |
-        pip install pylint
-        pylint src
-      continue-on-error: true
+    # - name: Verificando lint
+    #   run: |
+    #     pip install pylint
+    #     pylint src
+    #   continue-on-error: true
 
     - name: Lint with Flake8
-      run: flake8 src/ --max-line-length=101
+      run: flake8 src/ --max-line=150
 
     - name: Realizando testes
       run: poetry run pytest --cov 

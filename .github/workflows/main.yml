@@ -1,4 +1,4 @@
-name: deploy
+name: Build and Publish
 
 on:
   push:
@@ -8,19 +8,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
+    - name: Cópiando dados da master
       uses: actions/checkout@v2
 
-    - name: Setup Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-        sudo systemctl start docker
-        sudo systemctl enable docker
+    - name: Configurando python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
 
-    - name: Build and run with Docker Compose
+    - name: Incrementando versão na lib
+      run: poetry version patch
+
+    - name: Instalando dependencias
+      run: poetry install
+
+    - name: Build package
+      run: poetry build -v
+
+    - name: Publicação no PyPI
       run: |
-        docker-compose build
-        docker-compose up -d
+        poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+        poetry publish --username __token__ -v

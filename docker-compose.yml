@@ -19,6 +19,6 @@ services:
 
   lib:
     build: .
-    env_file:
-      - .env
-    command: bash -c "poetry config pypi-token.pypi ${TOKEN_PYPI} && poetry version ${VERSION} && poetry build && poetry publish"
+    # env_file:
+      # - .env
+    # command: bash -c "poetry config pypi-token.pypi ${TOKEN_PYPI} && poetry version ${VERSION} && poetry build && poetry publish"

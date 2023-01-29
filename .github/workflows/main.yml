@@ -39,9 +39,7 @@ jobs:
       run: echo "VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')" >> $GITHUB_ENV
 
     - name: Incrementando versão na lib
-      run: |
-        poetry version $VERSION
-        poetry version patch
+      run: poetry version patch
 
     - name: Build package
       run: poetry build -v

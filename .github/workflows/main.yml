@@ -40,9 +40,6 @@ jobs:
     - name: Realizando testes
       run: poetry run pytest --cov 
 
-    - name: Incrementando versão na lib
-      run: poetry version patch
-
     - name: Build package
       run: poetry build -v
 

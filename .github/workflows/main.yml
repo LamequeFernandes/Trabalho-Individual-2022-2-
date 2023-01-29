@@ -29,10 +29,14 @@ jobs:
 
     - name: Atualizando versão
       run: |
-        VERSION=${{ env.VERSION }}
-        NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
-        echo ::set-env name=NEW_VERSION::$NEW_VERSION
-        sed -i "s/$VERSION/$NEW_VERSION/g" pyproject.toml
+        if [ -z "$VERSION" ]; then
+          echo "A variavel VERSION esta vazia"
+          exit 1
+        else
+          NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
+          echo ::set-env name=NEW_VERSION::$NEW_VERSION
+          sed -i "s/$VERSION/$NEW_VERSION/g" pyproject.toml
+        fi
 
     - name: Instalando Poetry
       run: python -m pip install poetry

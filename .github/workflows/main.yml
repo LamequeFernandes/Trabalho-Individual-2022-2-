@@ -25,7 +25,7 @@ jobs:
       run: python -m pip install poetry
 
     - name: Instalando Sphinx
-      run: apt-get install python3-sphinx -y
+      run: apt install --allow-unauthenticated python3-sphinx -y
 
     - name: Update version pyproject
       run: |

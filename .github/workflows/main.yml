@@ -25,7 +25,9 @@ jobs:
       run: python -m pip install poetry
 
     - name: Update version pyproject
-      run: poetry run python update_version.py
+      run: |
+        pip install requests
+        python update_version.py
 
     - name: Instalando dependencias
       run: |

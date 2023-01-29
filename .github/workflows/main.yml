@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+# env:
+#   ACTIONS_ALLOW_UNSECURE_COMMANDS: "true"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,13 +36,11 @@ jobs:
       run: poetry run pytest --cov 
 
     - name: Recuperando ultima versão da lib
-      run: |
-        VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')
-        echo ::set-env name=VERSION::$VERSION
+      run: "VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')" >> $GITHUB_ENV
 
     - name: Incrementando versão na lib
       run: |
-        poetry version ${{ env.VERSION }}
+        poetry version $VERSION
         poetry version patch
 
     - name: Build package

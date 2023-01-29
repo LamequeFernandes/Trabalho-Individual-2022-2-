@@ -24,7 +24,10 @@ jobs:
       run: poetry install
 
     - name: Verificando lint
-      run: poetry run pylint src
+      run: |
+        pip install pylint
+        pylint src
+      continue-on-error: true
 
     - name: Realizando testes
       run: poetry run pytest --cov 

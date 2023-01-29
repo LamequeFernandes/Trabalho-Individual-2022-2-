@@ -28,8 +28,8 @@ jobs:
 
     - name: Realizando testes
       run: |
-        pytest --cov
         poetry shell
+        pytest --cov
 
     - name: Recuperando ultima versão da lib
       run: |

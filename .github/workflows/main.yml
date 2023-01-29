@@ -25,6 +25,7 @@ jobs:
       run: |
         VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')
         echo ::set-env name=VERSION::$VERSION
+        export VERSION=${{ env.VERSION }}
 
     - name: Atualizando versão
       run: |

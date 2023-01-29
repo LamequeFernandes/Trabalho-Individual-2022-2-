@@ -24,6 +24,9 @@ jobs:
     - name: Instalando Poetry
       run: python -m pip install poetry
 
+    - name: Instalando flake8
+      run: python -m pip install flake8
+
     - name: Instalando Sphinx
       run: sudo apt install --allow-unauthenticated python3-sphinx -y
 
@@ -41,6 +44,9 @@ jobs:
         pip install pylint
         pylint src
       continue-on-error: true
+
+    - name: Lint with Flake8
+      run: flake8 src/ --max-line-length=101
 
     - name: Realizando testes
       run: poetry run pytest --cov 

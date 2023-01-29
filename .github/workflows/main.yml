@@ -36,7 +36,7 @@ jobs:
       run: poetry run pytest --cov 
 
     - name: Recuperando ultima versão da lib
-      run: "VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')" >> $GITHUB_ENV
+      run: echo "VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')" >> $GITHUB_ENV
 
     - name: Incrementando versão na lib
       run: |

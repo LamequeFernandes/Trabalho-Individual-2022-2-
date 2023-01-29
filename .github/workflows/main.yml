@@ -1,4 +1,4 @@
-name: Build and Publish
+name: CI/CD
 
 on:
   push:
@@ -29,7 +29,13 @@ jobs:
     - name: Realizando testes
       run: pytest --cov
 
+    - name: Recuperando ultima versão da lib
+      run: |
+        VERSION=$(pip show trabalho-individual-2022-2-lameque | grep Version | awk '{print $2}')
+        echo ::set-env name=VERSION::$VERSION
+
     - name: Incrementando versão na lib
+      run: poetry version ${{ env.VERSION }}
       run: poetry version patch
 
     - name: Build package

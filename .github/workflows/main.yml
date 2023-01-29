@@ -20,11 +20,17 @@ jobs:
     - name: Instalando Poetry
       run: python -m pip install poetry
 
-    - name: Incrementando versão na lib
-      run: poetry version patch
-
     - name: Instalando dependencias
       run: poetry install
+
+    - name: Verificando lint
+      run: pylint src
+
+    - name: Realizando testes
+      run: pytest --cov
+
+    - name: Incrementando versão na lib
+      run: poetry version patch
 
     - name: Build package
       run: poetry build -v

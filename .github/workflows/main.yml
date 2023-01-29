@@ -27,7 +27,9 @@ jobs:
       run: pylint src
 
     - name: Realizando testes
-      run: pytest --cov
+      run: |
+        pytest --cov
+        poetry shell
 
     - name: Recuperando ultima versão da lib
       run: |

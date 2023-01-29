@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "trabalho-individual-2022-2-lameque"
-version = "$VERSION"
+version = "0.1.0"
 description = ""
 authors = ["LamequeFernandes <lamequesao@gmail.com>"]
 readme = "README.md"

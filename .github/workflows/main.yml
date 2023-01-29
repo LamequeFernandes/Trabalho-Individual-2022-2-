@@ -16,6 +16,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
+    
+    - name: Instalando Poetry
+      run: python -m pip install poetry
 
     - name: Incrementando versão na lib
       run: poetry version patch

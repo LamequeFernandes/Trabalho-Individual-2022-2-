@@ -35,8 +35,9 @@ jobs:
         echo ::set-env name=VERSION::$VERSION
 
     - name: Incrementando versão na lib
-      run: poetry version ${{ env.VERSION }}
-      run: poetry version patch
+      run: |
+        poetry version ${{ env.VERSION }}
+        poetry version patch
 
     - name: Build package
       run: poetry build -v
